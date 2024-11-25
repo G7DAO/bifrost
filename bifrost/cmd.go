@@ -5,7 +5,7 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/G7DAO/bifrost/version"
+	"github.com/G7DAO/bifrost/bifrost/version"
 )
 
 func CreateRootCommand() *cobra.Command {

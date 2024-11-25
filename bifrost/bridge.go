@@ -7,8 +7,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/G7DAO/bifrost/bindings/ERC20Inbox"
-	"github.com/G7DAO/bifrost/bindings/NodeInterface"
+	"github.com/G7DAO/protocol/bindings/ERC20Inbox"
+	"github.com/G7DAO/protocol/bindings/NodeInterface"
 	"github.com/ethereum/go-ethereum/accounts/abi"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/accounts/keystore"
