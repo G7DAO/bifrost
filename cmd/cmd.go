@@ -3,6 +3,7 @@ package bifrost
 import (
 	"os"
 
+	arbitrum_bifrost "github.com/G7DAO/bifrost/cmd/arbitrum"
 	"github.com/G7DAO/bifrost/cmd/version"
 	"github.com/spf13/cobra"
 )
@@ -20,7 +21,7 @@ func CreateRootCommand() *cobra.Command {
 	completionCmd := CreateCompletionCommand(rootCmd)
 	versionCmd := CreateVersionCommand()
 
-	arbitrumCmd := CreateArbitrumCommand()
+	arbitrumCmd := arbitrum_bifrost.CreateArbitrumCommand()
 
 	rootCmd.AddCommand(completionCmd, versionCmd, arbitrumCmd)
 

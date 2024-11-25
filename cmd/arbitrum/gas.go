@@ -1,4 +1,4 @@
-package bifrost
+package arbitrum_bifrost
 
 import (
 	"context"
