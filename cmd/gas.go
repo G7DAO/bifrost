@@ -5,9 +5,9 @@ import (
 	"math/big"
 	"strings"
 
-	"github.com/G7DAO/protocol/bindings/ArbitrumL1OrbitCustomGateway"
-	"github.com/G7DAO/protocol/bindings/ArbitrumL1OrbitGatewayRouter"
-	"github.com/G7DAO/protocol/bindings/NodeInterface"
+	"github.com/G7DAO/bifrost/bindings/ArbitrumL1OrbitCustomGateway"
+	"github.com/G7DAO/bifrost/bindings/ArbitrumL1OrbitGatewayRouter"
+	"github.com/G7DAO/bifrost/bindings/NodeInterface"
 	"github.com/ethereum/go-ethereum"
 	"github.com/ethereum/go-ethereum/accounts/abi"
 	"github.com/ethereum/go-ethereum/accounts/keystore"

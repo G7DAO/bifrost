@@ -8,7 +8,7 @@ import (
 	"math/big"
 	"net/http"
 
-	"github.com/G7DAO/protocol/bindings/GnosisSafe"
+	"github.com/G7DAO/bifrost/bindings/GnosisSafe"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/accounts/keystore"
 	"github.com/ethereum/go-ethereum/common"

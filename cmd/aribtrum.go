@@ -33,9 +33,9 @@ func CreateArbitrumCommand() *cobra.Command {
 	var safeNonce *big.Int
 
 	arbitrumCmd := &cobra.Command{
-		Use:   "l1-to-l2",
-		Short: "Bridge tokens from L1 to L2",
-		Long:  `Bridge tokens from L1 to L2 with a single transaction and arbitrary calldata`,
+		Use:   "arbitrum",
+		Short: "Bifrost for Arbitrum cross-chain messaging protocol",
+		Long:  `Bifrost for Arbitrum cross-chain messaging protocol`,
 
 		PreRunE: func(cmd *cobra.Command, args []string) error {
 			if !common.IsHexAddress(inboxRaw) {

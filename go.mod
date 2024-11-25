@@ -1,26 +1,22 @@
-module github.com/G7DAO/protocol
+module github.com/G7DAO/bifrost
 
 go 1.22.0
 
 toolchain go1.22.2
 
 require (
-	github.com/G7DAO/seer v0.3.0
 	github.com/ethereum/go-ethereum v1.14.10
-	github.com/google/uuid v1.6.0
 	github.com/spf13/cobra v1.8.0
 	golang.org/x/term v0.20.0
 )
 
-require (
-	github.com/btcsuite/btcd/btcec/v2 v2.3.4 // indirect
-	github.com/btcsuite/btcd/chaincfg/chainhash v1.1.0 // indirect
-)
+require github.com/btcsuite/btcd/btcec/v2 v2.3.4 // indirect
 
 require (
 	github.com/Microsoft/go-winio v0.6.2 // indirect
 	github.com/StackExchange/wmi v1.2.1 // indirect
 	github.com/bits-and-blooms/bitset v1.13.0 // indirect
+	github.com/btcsuite/btcd/chaincfg/chainhash v1.1.0 // indirect
 	github.com/consensys/bavard v0.1.13 // indirect
 	github.com/consensys/gnark-crypto v0.12.1 // indirect
 	github.com/crate-crypto/go-ipa v0.0.0-20240223125850-b1e8a79f509c // indirect
@@ -31,6 +27,7 @@ require (
 	github.com/ethereum/go-verkle v0.1.1-0.20240829091221-dffa7562dbe9 // indirect
 	github.com/fsnotify/fsnotify v1.6.0 // indirect
 	github.com/go-ole/go-ole v1.3.0 // indirect
+	github.com/google/uuid v1.6.0 // indirect
 	github.com/gorilla/websocket v1.5.0 // indirect
 	github.com/holiman/uint256 v1.3.1 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
@@ -44,5 +41,6 @@ require (
 	golang.org/x/exp v0.0.0-20231110203233-9a3e6036ecaa // indirect
 	golang.org/x/sync v0.8.0 // indirect
 	golang.org/x/sys v0.25.0 // indirect
+	golang.org/x/text v0.18.0 // indirect
 	rsc.io/tmplfunc v0.0.3 // indirect
 )
