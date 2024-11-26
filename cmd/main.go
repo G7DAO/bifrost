@@ -1,4 +1,4 @@
-package bifrost
+package main
 
 import (
 	"fmt"
