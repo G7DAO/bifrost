@@ -104,7 +104,6 @@ func CreateArbitrumCommand() *cobra.Command {
 					}
 				} else {
 					fmt.Println("--safe-nonce not specified, fetching from Safe")
-					safeNonce = big.NewInt(0)
 				}
 			}
 
