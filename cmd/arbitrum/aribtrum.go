@@ -12,18 +12,6 @@ import (
 	"github.com/spf13/cobra"
 )
 
-func CreateBifrostCommand() *cobra.Command {
-	bifrostCmd := &cobra.Command{
-		Use:   "bifrost",
-		Short: "Bifrost CLI",
-		Long:  `Bifrost CLI`,
-	}
-
-	bifrostCmd.AddCommand(CreateArbitrumCommand())
-
-	return bifrostCmd
-}
-
 func CreateArbitrumCommand() *cobra.Command {
 	var keyFile, password, l1Rpc, l2Rpc, inboxRaw, toRaw, l2CallValueRaw, l2CalldataRaw, safeAddressRaw, safeApi, safeNonceRaw string
 	var inboxAddress, to, safeAddress common.Address
