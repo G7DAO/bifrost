@@ -4,6 +4,7 @@ import (
 	"os"
 
 	arbitrum_bifrost "github.com/G7DAO/bifrost/cmd/arbitrum"
+	"github.com/G7DAO/bifrost/cmd/cctp"
 	"github.com/G7DAO/bifrost/cmd/version"
 	"github.com/spf13/cobra"
 )
@@ -22,8 +23,9 @@ func CreateRootCommand() *cobra.Command {
 	versionCmd := CreateVersionCommand()
 
 	arbitrumCmd := arbitrum_bifrost.CreateArbitrumCommand()
+	cctpCmd := cctp.CreateCctpCommand()
 
-	rootCmd.AddCommand(completionCmd, versionCmd, arbitrumCmd)
+	rootCmd.AddCommand(completionCmd, versionCmd, arbitrumCmd, cctpCmd)
 
 	// By default, cobra Command objects write to stderr. We have to forcibly set them to output to
 	// stdout.
