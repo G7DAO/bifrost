@@ -13,6 +13,19 @@ import (
 )
 
 func CreateArbitrumCommand() *cobra.Command {
+	arbitrumCmd := &cobra.Command{
+		Use:   "arbitrum",
+		Short: "Bifrost for Arbitrum cross-chain messaging protocol",
+		Long:  `Bifrost for Arbitrum cross-chain messaging protocol`,
+	}
+
+	arbitrumCmd.AddCommand(CreateArbitrumMessageCommand())
+	arbitrumCmd.AddCommand(CreateArbitrumBridgeCommand())
+
+	return arbitrumCmd
+}
+
+func CreateArbitrumMessageCommand() *cobra.Command {
 	var keyFile, password, l1Rpc, l2Rpc, inboxRaw, toRaw, l2CallValueRaw, l2CalldataRaw, safeAddressRaw, safeApi, safeNonceRaw string
 	var inboxAddress, to, safeAddress common.Address
 	var l2CallValue *big.Int
@@ -20,8 +33,8 @@ func CreateArbitrumCommand() *cobra.Command {
 	var safeOperation uint8
 	var safeNonce *big.Int
 
-	arbitrumCmd := &cobra.Command{
-		Use:   "arbitrum",
+	messageCmd := &cobra.Command{
+		Use:   "message",
 		Short: "Bifrost for Arbitrum cross-chain messaging protocol",
 		Long:  `Bifrost for Arbitrum cross-chain messaging protocol`,
 
@@ -119,18 +132,18 @@ func CreateArbitrumCommand() *cobra.Command {
 		},
 	}
 
-	arbitrumCmd.Flags().StringVar(&password, "password", "", "Password to encrypt accounts with")
-	arbitrumCmd.Flags().StringVar(&keyFile, "keyfile", "", "Keyfile to sign transaction with")
-	arbitrumCmd.Flags().StringVar(&l1Rpc, "l1-rpc", "", "L1 RPC URL")
-	arbitrumCmd.Flags().StringVar(&l2Rpc, "l2-rpc", "", "L2 RPC URL")
-	arbitrumCmd.Flags().StringVar(&inboxRaw, "inbox", "", "Inbox address")
-	arbitrumCmd.Flags().StringVar(&toRaw, "to", "", "Recipient or contract address")
-	arbitrumCmd.Flags().StringVar(&l2CallValueRaw, "amount", "", "L2 call value")
-	arbitrumCmd.Flags().StringVar(&l2CalldataRaw, "l2-calldata", "", "Calldata to send")
-	arbitrumCmd.Flags().StringVar(&safeAddressRaw, "safe", "", "Address of the Safe contract")
-	arbitrumCmd.Flags().StringVar(&safeApi, "safe-api", "", "Safe API for the Safe Transaction Service (optional)")
-	arbitrumCmd.Flags().Uint8Var(&safeOperation, "safe-operation", 0, "Safe operation type: 0 (Call) or 1 (DelegateCall)")
-	arbitrumCmd.Flags().StringVar(&safeNonceRaw, "safe-nonce", "", "Safe nonce")
+	messageCmd.Flags().StringVar(&password, "password", "", "Password to encrypt accounts with")
+	messageCmd.Flags().StringVar(&keyFile, "keyfile", "", "Keyfile to sign transaction with")
+	messageCmd.Flags().StringVar(&l1Rpc, "l1-rpc", "", "L1 RPC URL")
+	messageCmd.Flags().StringVar(&l2Rpc, "l2-rpc", "", "L2 RPC URL")
+	messageCmd.Flags().StringVar(&inboxRaw, "inbox", "", "Inbox address")
+	messageCmd.Flags().StringVar(&toRaw, "to", "", "Recipient or contract address")
+	messageCmd.Flags().StringVar(&l2CallValueRaw, "amount", "", "L2 call value")
+	messageCmd.Flags().StringVar(&l2CalldataRaw, "l2-calldata", "", "Calldata to send")
+	messageCmd.Flags().StringVar(&safeAddressRaw, "safe", "", "Address of the Safe contract")
+	messageCmd.Flags().StringVar(&safeApi, "safe-api", "", "Safe API for the Safe Transaction Service (optional)")
+	messageCmd.Flags().Uint8Var(&safeOperation, "safe-operation", 0, "Safe operation type: 0 (Call) or 1 (DelegateCall)")
+	messageCmd.Flags().StringVar(&safeNonceRaw, "safe-nonce", "", "Safe nonce")
 
-	return arbitrumCmd
+	return messageCmd
 }

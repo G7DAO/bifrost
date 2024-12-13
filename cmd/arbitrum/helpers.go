@@ -1,10 +1,33 @@
 package arbitrum_bifrost
 
 import (
+	"fmt"
 	"math/big"
 
+	"github.com/G7DAO/bifrost/bindings/L1Teleporter"
+	"github.com/ethereum/go-ethereum/accounts/keystore"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/ethclient"
 )
+
+func GetForwarderAddress(client *ethclient.Client, teleporterAddress common.Address, key *keystore.Key, l2l3RouterOrInbox common.Address, to common.Address) (common.Address, error) {
+	teleporter, teleporterErr := L1Teleporter.NewL1Teleporter(teleporterAddress, client)
+	if teleporterErr != nil {
+		return common.Address{}, teleporterErr
+	}
+
+	l2ForwarderAddress, l2ForwarderAddressErr := teleporter.L2ForwarderAddress(
+		nil,
+		key.Address,
+		l2l3RouterOrInbox,
+		to,
+	)
+	if l2ForwarderAddressErr != nil {
+		return common.Address{}, l2ForwarderAddressErr
+	}
+
+	return l2ForwarderAddress, nil
+}
 
 // Source: https://github.com/OffchainLabs/nitro-contracts/blob/main/src/bridge/Inbox.sol#L323
 func CalculateRetryableSubmissionFee(calldata []byte, baseFee *big.Int) (*big.Int, error) {
@@ -48,6 +71,19 @@ func CalculateRequiredEth(gasParams RetryableGasParams, teleportationType Telepo
 	}
 
 	return requiredEth, requiredFeeToken
+}
+
+// Source: https://github.com/OffchainLabs/l1-l3-teleport-contracts/blob/820590ff81f85ca482c9d9aec6948c1277248950/contracts/lib/TeleportationType.sol#L13
+func GetTeleportationType(token common.Address, feeToken common.Address) (TeleportationType, error) {
+	if (token == common.Address{}) {
+		return Standard, fmt.Errorf("token address is empty")
+	} else if (feeToken == common.Address{}) {
+		return Standard, nil
+	} else if token == feeToken {
+		return OnlyCustomFee, nil
+	} else {
+		return NonFeeTokenToCustomFee, nil
+	}
 }
 
 // Source: https://github.com/OffchainLabs/nitro/blob/057bf836fcf719e803b0486914bc957134f691fd/arbos/util/util.go#L204
